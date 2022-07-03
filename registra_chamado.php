@@ -1,7 +1,4 @@
 <?php
-echo '<pre>';
-print_r($_POST);
-echo '</pre>';
 
 //abrindo um arquivo com qlq extensão
 $arquivo = fopen('arquivo.hd', 'a'); //arquivo.hd é uma extensão própria deste projeto neste caso. Siginifica "Help Desk"

@@ -14,7 +14,7 @@ $texto = $titulo . '#' . $categoria . '#' . $descricao ;
 
             //--------DESAFIO DA AULA---------
             //substituir a lógica a cima pelo implode.
-$texto = implode("#", $_POST);
+$texto = implode("#", $_POST) . PHP_EOL ;//eol = end of line
             //resolvido.
 
 
@@ -24,3 +24,5 @@ fwrite($arquivo, $texto);
 
 //fechando arquivo, funçao nativa do php
 fclose($arquivo);
+
+header('location:abrir_chamado.php');

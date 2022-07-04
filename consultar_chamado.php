@@ -1,9 +1,10 @@
-<?php require_once("validador_acesso.php"); ?>
+<?php require_once("validador_acesso.php");
 
+?>
 <?php
+
 //chamados
 $chamados = [];
-
 
 $arquivo = fopen('arquivo.hd', 'r');//somente leitura
 while (!feof($arquivo)) { //funcao nativa do php, le cada linha do arquivo, retorna true ou false encontrando ou nao o final do arquivo EOL.
@@ -36,7 +37,7 @@ fclose($arquivo); //fechando o arquivo aberto
 
 <nav class="navbar navbar-dark bg-dark">
     <a class="navbar-brand" href="#">
-        <img src="logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+        <img src="./imagens/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
         App Help Desk
     </a>
 </nav>
@@ -56,6 +57,12 @@ fclose($arquivo); //fechando o arquivo aberto
 
                         <?php
                         $chamado_dados = explode('#', $chamado);
+                        if ($_SESSION['perfil_id'] == 2){
+                            //Só vamos exibir o chamado se foi criado pelo usuario
+                            if ($_SESSION['id'] != $chamado_dados[0]){
+                                continue;
+                            }
+                        }
 
                         //tratando os erros ao imprimir o ultimo array vazio, devido a logica de iteracao do php na logica de
                         // quebra de linha do PHP_EOL(END OF LINE)
@@ -66,12 +73,12 @@ fclose($arquivo); //fechando o arquivo aberto
 
                         <div class="card mb-3 bg-light">
                             <div class="card-body">
-                                <h5 class="card-title"><?= $chamado_dados[0] ?></h5>
-                                <h6 class="card-subtitle mb-2 text-muted"><?= $chamado_dados[1] ?></h6>
-                                <p class="card-text"><?= $chamado_dados[2] ?></p>
-
+                                <h5 class="card-title"><?= $chamado_dados[1] ?></h5>
+                                <h6 class="card-subtitle mb-2 text-muted"><?= $chamado_dados[2] ?></h6>
+                                <p class="card-text"><?= $chamado_dados[3] ?></p>
                             </div>
                         </div>
+
 
                     <?php } ?>
                     <div class="row mt-5">

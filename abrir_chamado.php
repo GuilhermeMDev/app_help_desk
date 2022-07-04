@@ -38,11 +38,12 @@
                     <div class="row">
                         <div class="col">
 
-                            <form method="post" action="registra_chamado.php
-">
+                            <form method="post" action="registra_chamado.php">
                                 <div class="form-group">
+                                    <!-- O input a baixo, foi uma solucao pra inserir o ID do usuario logado, a cada chamada aberta e salva no arquivo.hd         -->
+                                    <input name="id" type="text" hidden value= <?= $_SESSION['id'] ?>>
                                     <label>Título</label>
-                                    <input  name="titulo" type="text" class="form-control" placeholder="Título">
+                                    <input name="titulo" type="text" class="form-control" placeholder="Título">
                                 </div>
 
                                 <div class="form-group">
